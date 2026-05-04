@@ -2,510 +2,268 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="机密行动组">
-<link rel="apple-touch-icon" id="touch-icon" href="">
+<meta name="apple-mobile-web-app-title" content="機密行動">
+<link rel="apple-touch-icon" id="ti" href="">
 <script>
-(function(){
-  var c=document.createElement('canvas');c.width=180;c.height=180;
-  var x=c.getContext('2d');
-  // rounded rect background
-  var r=36;x.beginPath();x.moveTo(r,0);x.lineTo(180-r,0);x.quadraticCurveTo(180,0,180,r);
-  x.lineTo(180,180-r);x.quadraticCurveTo(180,180,180-r,180);x.lineTo(r,180);
-  x.quadraticCurveTo(0,180,0,180-r);x.lineTo(0,r);x.quadraticCurveTo(0,0,r,0);x.closePath();
-  var g=x.createLinearGradient(0,0,180,180);g.addColorStop(0,'#1a1a2e');g.addColorStop(1,'#16213e');
-  x.fillStyle=g;x.fill();
-  // S letter with gradient
-  x.font='bold italic 130px Georgia,serif';x.textAlign='center';x.textBaseline='middle';
-  var sg=x.createLinearGradient(30,30,150,150);sg.addColorStop(0,'#4ade80');sg.addColorStop(1,'#22d3ee');
-  x.fillStyle=sg;x.fillText('S',90,96);
-  document.getElementById('touch-icon').href=c.toDataURL('image/png');
-})();
+(function(){var c=document.createElement('canvas');c.width=180;c.height=180;var x=c.getContext('2d');
+x.fillStyle='#0a0e17';x.fillRect(0,0,180,180);
+x.strokeStyle='rgba(0,200,220,0.3)';x.lineWidth=1;x.strokeRect(10,10,160,160);
+x.font='bold italic 100px Georgia,serif';x.textAlign='center';x.textBaseline='middle';
+x.fillStyle='#00c8dc';x.fillText('S',90,86);
+x.fillStyle='#ff6b40';x.fillRect(10,160,160,3);
+document.getElementById('ti').href=c.toDataURL('image/png');})();
 </script>
 <title>特别高度机密行动组</title>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-:root {
-  --bg: #0f0f0f; --bg2: #1a1a2e; --card: rgba(255,255,255,0.03);
-  --border: rgba(255,255,255,0.07); --text: #e8e8e8; --dim: rgba(255,255,255,0.35);
-  --dim2: rgba(255,255,255,0.2); --green: #4ade80; --green-bg: rgba(74,222,128,0.1);
-  --red: #f87171; --yellow: #fbbf24; --purple: #818cf8; --cyan: #22d3ee;
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+--bg:#161b26;--bg2:#1c2230;--bg3:#222838;--card:rgba(26,32,46,0.88);
+--border:rgba(0,200,220,0.1);--border2:rgba(0,200,220,0.05);
+--text:#c8d4dc;--text2:#90a4b4;--dim:#607888;--dim2:#445868;
+--cyan:#00c8dc;--cyan2:#00a0b4;--cyan-g:rgba(0,200,220,0.1);--cyan-glow:rgba(0,200,220,0.2);
+--coral:#ff7a55;--coral-g:rgba(255,122,85,0.1);--coral-glow:rgba(255,122,85,0.25);
+--gold:#e0c060;--gold-g:rgba(224,192,96,0.08);
+--f:'Exo 2','Noto Sans SC',sans-serif;--fb:'Noto Sans SC',-apple-system,sans-serif;
 }
-body {
-  font-family: -apple-system, 'PingFang SC', 'Hiragino Sans GB', sans-serif;
-  background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 50%, #16213e 100%);
-  color: var(--text); min-height: 100vh; padding-bottom: 80px;
-  -webkit-font-smoothing: antialiased;
+body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:80px;
+-webkit-font-smoothing:antialiased;
+background-image:radial-gradient(circle at 50% 0%,rgba(0,200,220,0.04) 0%,transparent 60%);
 }
-.header {
-  padding: 28px 20px 18px; background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%);
-  border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10;
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-}
-.header-top { display:flex; justify-content:space-between; align-items:flex-start; }
-.header h1 { font-size:24px; font-weight:700; letter-spacing:0.5px; color:#fff; }
-.header .sub { font-size:12px; color:var(--dim); margin-top:4px; }
-.streak-box { text-align:right; }
-.streak-num { font-size:30px; font-weight:800; color:var(--green); line-height:1; }
-.streak-label { font-size:10px; color:var(--dim); margin-top:2px; }
-.phase-bar { display:flex; gap:7px; margin-top:16px; }
-.phase-btn {
-  flex:1; padding:9px 4px; border-radius:10px; border:1px solid var(--border);
-  background: var(--card); color:var(--dim); font-size:12px; text-align:center; cursor:pointer;
-  transition: all 0.2s;
-}
-.phase-btn.active { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:600; }
-.phase-btn small { display:block; font-size:10px; margin-top:2px; opacity:0.7; }
-.week-nav { padding:14px 20px 6px; }
-.week-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
-.week-header span { font-size:13px; color:var(--dim); }
-.nav-btn { background:none; border:none; color:var(--dim); font-size:20px; cursor:pointer; padding:4px 10px; }
-.back-btn {
-  background:none; border:1px solid var(--border); color:var(--dim); font-size:11px;
-  padding:2px 10px; border-radius:4px; cursor:pointer; margin-left:8px;
-}
-.week-row { display:flex; gap:5px; }
-.day-btn {
-  flex:1; padding:7px 0; border-radius:10px; border:1px solid rgba(255,255,255,0.06);
-  background: var(--card); text-align:center; cursor:pointer; transition:all 0.15s;
-}
-.day-btn.sel { border-color:var(--green); background:var(--green-bg); }
-.day-btn .dl { font-size:11px; color:var(--dim); }
-.day-btn.today .dl { color:var(--green); }
-.day-btn .dd { font-size:15px; font-weight:500; color:var(--dim); margin-top:2px; }
-.day-btn.sel .dd { color:#fff; font-weight:700; }
-.day-btn.done .dd { color:var(--green); }
-.day-btn .ds { font-size:10px; margin-top:2px; min-height:14px; }
-.content { padding:6px 20px; }
-.section {
-  margin-bottom:10px; border-radius:14px; border:1px solid var(--border);
-  background:var(--card); overflow:hidden;
-}
-.section-header {
-  display:flex; align-items:center; justify-content:space-between; padding:15px 16px;
-  cursor:pointer; user-select:none;
-}
-.section-header .bar { width:4px; height:18px; border-radius:2px; margin-right:10px; flex-shrink:0; }
-.section-header .stitle { font-size:14px; font-weight:600; color:var(--text); }
-.section-header .ssub { font-size:11px; color:var(--dim); margin-top:2px; }
-.section-header .arrow {
-  font-size:14px; color:var(--dim2); transition:transform 0.2s; flex-shrink:0;
-}
-.section-header .arrow.open { transform:rotate(90deg); }
-.section-body { padding:0 16px 16px; }
-.exercise-item {
-  display:flex; align-items:flex-start; padding:12px 0;
-  border-bottom:1px solid rgba(255,255,255,0.04); cursor:pointer; user-select:none;
-}
-.exercise-item:last-child { border-bottom:none; }
-.checkbox {
-  width:26px; height:26px; border-radius:7px; border:1.5px solid var(--border);
-  display:flex; align-items:center; justify-content:center; flex-shrink:0;
-  margin-right:12px; margin-top:1px; transition:all 0.15s; font-size:13px; font-weight:700;
-  color:transparent;
-}
-.checkbox.checked { border:none; background:var(--green); color:var(--bg); }
-.ex-name { font-size:14px; font-weight:500; color:var(--text); }
-.ex-name.checked { color:var(--dim); text-decoration:line-through; }
-.ex-tip { font-size:12px; color:var(--dim2); margin-top:2px; line-height:1.5; }
-.detail-toggle {
-  font-size:12px; color:var(--cyan); cursor:pointer; margin-top:5px;
-  display:inline-block; user-select:none;
-}
-.ex-detail {
-  font-size:12px; color:rgba(255,255,255,0.45); margin-top:6px; line-height:1.7;
-  padding:10px 12px; background:rgba(255,255,255,0.02); border-radius:8px;
-  border-left:2px solid rgba(255,255,255,0.08);
-}
-.complete-btn {
-  width:100%; margin-top:12px; padding:12px; border-radius:8px; font-size:14px;
-  font-weight:600; cursor:pointer; transition:all 0.15s;
-}
-.complete-btn.off { border:1.5px dashed var(--border); background:transparent; color:var(--dim); }
-.complete-btn.on { border:1.5px solid var(--green); background:var(--green-bg); color:var(--green); }
-.stretch-row {
-  display:flex; align-items:center; padding:9px 0;
-  border-bottom:1px solid rgba(255,255,255,0.04);
-}
-.stretch-row:last-child { border-bottom:none; }
-.stretch-tag { font-size:10px; color:var(--purple); font-weight:600; margin-right:8px; flex-shrink:0; }
-.stretch-name { font-size:13px; flex:1; }
-.stretch-time { font-size:12px; color:var(--dim); flex-shrink:0; }
-.micro-row { padding:9px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
-.micro-row:last-child { border-bottom:none; }
-.micro-name { font-size:13px; }
-.micro-detail { font-size:12px; color:var(--dim2); margin-top:2px; }
-.micro-counter {
-  display:flex; align-items:center; justify-content:space-between; margin-top:14px;
-  padding:12px 16px; background:rgba(34,211,238,0.06); border-radius:10px;
-  border:1px solid rgba(34,211,238,0.15);
-}
-.micro-num { font-size:24px; font-weight:700; color:var(--cyan); }
-.micro-label { font-size:13px; color:var(--dim); margin-left:8px; }
-.micro-add {
-  padding:10px 22px; border:none; border-radius:8px; background:var(--cyan);
-  color:var(--bg); font-size:14px; font-weight:700; cursor:pointer;
-}
-.rest-toggle {
-  display:flex; justify-content:flex-end; margin-bottom:8px;
-}
-.rest-btn {
-  padding:6px 14px; border:1px solid var(--border); border-radius:6px;
-  background:var(--card); color:var(--dim); font-size:12px; cursor:pointer;
-}
-.rest-view {
-  text-align:center; padding:40px 20px;
-}
-.rest-view .emoji { font-size:48px; margin-bottom:12px; }
-.rest-view .rtitle { font-size:18px; color:var(--dim); margin-bottom:6px; }
-.rest-view .rsub { font-size:13px; color:var(--dim2); margin-bottom:24px; }
-.done-banner {
-  text-align:center; padding:24px; margin-top:12px; border-radius:14px;
-  background:linear-gradient(135deg, var(--green-bg) 0%, rgba(34,211,238,0.08) 100%);
-  border:1px solid rgba(74,222,128,0.2);
-}
-.done-banner .emoji { font-size:32px; margin-bottom:8px; }
-.done-banner .dtitle { font-size:18px; font-weight:700; color:var(--green); }
-.done-banner .dsub { font-size:13px; color:var(--dim); margin-top:4px; }
-.warmup-row {
-  display:flex; align-items:flex-start; padding:10px 0;
-  border-bottom:1px solid rgba(255,255,255,0.04);
-}
-.warmup-row:last-child { border-bottom:none; }
-.warmup-time { font-size:12px; color:var(--dim); width:70px; flex-shrink:0; }
-.warmup-name { font-size:13px; }
-.warmup-tip { font-size:12px; color:var(--dim2); margin-top:2px; }
+/* HEADER */
+.hd{padding:0;position:sticky;top:0;z-index:10;background:rgba(22,27,38,0.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:2px solid var(--cyan)}
+.hd-in{padding:20px 18px 12px;display:flex;justify-content:space-between;align-items:center}
+.hd h1{font-family:var(--f);font-size:14px;font-weight:800;color:var(--cyan);letter-spacing:3px;text-transform:uppercase}
+.hd h1::before{content:'//';margin-right:6px;color:var(--dim)}
+.sk{display:flex;align-items:center;gap:5px;background:var(--cyan-g);border:1px solid rgba(0,200,220,0.2);padding:4px 12px}
+.sk-n{font-family:var(--f);font-size:20px;font-weight:800;color:var(--cyan);line-height:1}
+.sk-l{font-size:8px;color:var(--cyan);letter-spacing:2px;font-weight:700;font-family:var(--f)}
+/* PHASE */
+.pb{display:flex;gap:0;border-top:1px solid var(--border)}
+.pt{flex:1;padding:9px 4px;background:none;border:none;border-right:1px solid var(--border);color:var(--dim);font-family:var(--f);font-size:10px;text-align:center;cursor:pointer;transition:.2s;font-weight:600;letter-spacing:1px}
+.pt:last-child{border-right:none}
+.pt.a{background:var(--cyan);color:var(--bg)}
+.pt small{display:block;font-size:8px;margin-top:2px;opacity:.6;font-weight:400}
+/* WEEK */
+.wn{padding:12px 18px 6px}
+.wh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.wh span{font-size:10px;color:var(--dim);font-weight:600;letter-spacing:1px;font-family:var(--f)}
+.nb{background:none;border:none;color:var(--cyan);font-size:16px;cursor:pointer;padding:4px 8px;font-weight:800}
+.bb{background:var(--cyan-g);border:1px solid rgba(0,200,220,0.15);color:var(--cyan);font-size:8px;padding:3px 8px;cursor:pointer;margin-left:6px;font-weight:700;letter-spacing:1px;font-family:var(--f)}
+.wr{display:flex;gap:2px}
+.db{flex:1;padding:6px 0 5px;border:1px solid transparent;background:var(--bg3);text-align:center;cursor:pointer;transition:.15s}
+.db.s{background:var(--cyan);border-color:var(--cyan);box-shadow:0 0 12px var(--cyan-glow)}
+.db .dl{font-size:8px;color:var(--dim);font-weight:700;letter-spacing:1px;font-family:var(--f)}
+.db.s .dl{color:rgba(0,0,0,.6)}
+.db.t .dl{color:var(--coral)}
+.db.s.t .dl{color:rgba(0,0,0,.7)}
+.db .dd{font-family:var(--f);font-size:13px;font-weight:600;color:var(--dim);margin-top:1px}
+.db.s .dd{color:var(--bg);font-weight:800}
+.db.dn .dd{color:var(--cyan2)}
+.db.s.dn .dd{color:var(--bg)}
+.db .ds{font-size:8px;margin-top:1px;min-height:12px;color:var(--coral)}
+.db.s .ds{color:rgba(0,0,0,.6)}
+/* CONTENT */
+.ct{padding:6px 14px}
+/* SECTION */
+.sc{margin-bottom:8px;background:var(--card);border:1px solid var(--border);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);overflow:hidden}
+.sh{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;cursor:pointer;user-select:none;border-bottom:1px solid var(--border2)}
+.sh .si{width:3px;height:20px;margin-right:10px;flex-shrink:0}
+.sh .st{font-family:var(--f);font-size:12px;font-weight:800;color:var(--text);letter-spacing:1px;text-transform:uppercase}
+.sh .ss{font-size:9px;color:var(--dim);margin-top:2px;font-family:var(--f);letter-spacing:.5px}
+.sh .ar{font-size:10px;color:var(--dim2);transition:transform .2s;font-weight:800}
+.sh .ar.o{transform:rotate(90deg)}
+.sb{padding:10px 14px}
+/* EXERCISE */
+.ei{display:flex;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border2);cursor:pointer;user-select:none}
+.ei:last-child{border-bottom:none}
+.ei-wrap{display:flex;align-items:flex-start;width:100%}
+.cb{width:20px;height:20px;border:1.5px solid rgba(0,200,220,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:10px;margin-top:1px;transition:.15s;font-size:10px;font-weight:800;color:transparent}
+.cb.ck{border:none;background:var(--coral);color:#fff;box-shadow:0 0 8px var(--coral-glow)}
+.en{font-family:var(--f);font-size:13px;font-weight:700;color:var(--text);letter-spacing:.5px}
+.en.ck{color:var(--dim2);text-decoration:line-through;font-weight:500}
+.et{font-size:10px;color:var(--dim);margin-top:2px;line-height:1.5}
+.dt{font-size:9px;color:var(--cyan);cursor:pointer;margin-top:4px;display:inline-block;user-select:none;font-weight:700;letter-spacing:1px;font-family:var(--f)}
+.ed{font-size:10.5px;color:var(--text2);margin-top:6px;line-height:1.8;padding:8px 10px;background:var(--bg2);border-left:2px solid var(--cyan)}
+/* TIMER */
+.tm{display:flex;align-items:center;gap:6px;margin-top:0;margin-left:auto;flex-shrink:0}
+.tm-b{font-family:var(--f);font-size:12px;font-weight:700;padding:8px 14px;cursor:pointer;letter-spacing:1px;border:1.5px solid var(--cyan);background:transparent;color:var(--cyan);transition:.15s;min-width:56px;text-align:center}
+.tm-b:active{background:var(--cyan);color:var(--bg)}
+.tm-b.running{border-color:var(--coral);color:var(--coral);animation:pulse 1s infinite}
+.tm-d{font-family:var(--f);font-size:14px;font-weight:800;color:var(--cyan);min-width:40px;text-align:center}
+.tm-d.done{color:var(--coral)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+/* BUTTONS */
+.cb-btn{width:100%;margin-top:10px;padding:10px;font-size:11px;font-weight:700;cursor:pointer;transition:.15s;font-family:var(--f);letter-spacing:2px;text-transform:uppercase}
+.cb-btn.off{border:1.5px dashed var(--border);background:transparent;color:var(--dim)}
+.cb-btn.on{border:none;background:var(--coral);color:#fff;box-shadow:0 0 12px var(--coral-glow)}
+/* STRETCH */
+.si-r{padding:8px 0;border-bottom:1px solid var(--border2)}
+.si-r:last-child{border-bottom:none}
+.si-t{display:flex;align-items:center}
+.stag{font-family:var(--f);font-size:7px;font-weight:800;margin-right:6px;background:var(--coral);color:#fff;padding:2px 6px;letter-spacing:2px;text-transform:uppercase}
+.sn{font-size:12px;font-weight:600;flex:1}
+.sti{font-size:9px;color:var(--dim);font-family:var(--f);font-weight:600}
+/* MICRO */
+.mr{padding:8px 0;border-bottom:1px solid var(--border2)}.mr:last-child{border-bottom:none}
+.mn{font-size:12px;font-weight:700}.md{font-size:10px;color:var(--dim);margin-top:2px}
+.mc{display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding:10px 14px;background:var(--cyan-g);border:1px solid rgba(0,200,220,0.15)}
+.mc-n{font-family:var(--f);font-size:24px;font-weight:800;color:var(--cyan)}
+.mc-l{font-size:9px;color:var(--cyan);margin-left:5px;font-weight:700;font-family:var(--f);letter-spacing:1px}
+.mc-a{padding:8px 18px;border:none;background:var(--cyan);color:var(--bg);font-size:13px;font-weight:800;cursor:pointer;font-family:var(--f);box-shadow:0 0 8px var(--cyan-glow);letter-spacing:1px}
+/* REST/DONE */
+.rt{display:flex;justify-content:flex-end;margin-bottom:6px}
+.rb{padding:4px 12px;border:1px solid var(--border);background:none;color:var(--dim);font-size:9px;cursor:pointer;font-family:var(--f);font-weight:600;letter-spacing:1px}
+.rv{text-align:center;padding:40px 18px}
+.rv .re{font-size:32px;margin-bottom:12px}
+.rv .rtt{font-family:var(--f);font-size:16px;font-weight:800;color:var(--text2);letter-spacing:3px}
+.rv .rs{font-size:10px;color:var(--dim);margin:8px 0 24px;line-height:1.7}
+.dn-b{text-align:center;padding:20px;margin-top:10px;background:linear-gradient(135deg,var(--coral-g),var(--cyan-g));border:1px solid rgba(0,200,220,0.15)}
+.dn-b .de{font-size:24px;margin-bottom:6px}
+.dn-b .dtt{font-family:var(--f);font-size:14px;font-weight:800;color:var(--coral);letter-spacing:3px;text-transform:uppercase}
+.dn-b .dss{font-size:10px;color:var(--dim);margin-top:4px}
+/* WARMUP */
+.wu{display:flex;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border2)}.wu:last-child{border-bottom:none}
+.wu-wrap{display:flex;align-items:flex-start;flex:1}
+.wt{font-family:var(--f);font-size:9px;font-weight:700;color:var(--cyan);background:var(--cyan-g);border:1px solid rgba(0,200,220,0.15);padding:2px 6px;margin-right:8px;margin-top:2px;flex-shrink:0}
+.wna{font-size:12px;font-weight:700}.wtp{font-size:10px;color:var(--dim);margin-top:2px}
+/* PROGRESS */
+.pg{height:2px;background:var(--border);margin-top:10px;overflow:hidden}.pf{height:100%;background:linear-gradient(90deg,var(--cyan),var(--coral));transition:width .3s}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <script>
-const PHASES = [
-  {
-    name:"第一阶段·唤醒", weeks:"第 1-2 周", rounds:2, work:25, rest:20, roundRest:60,
-    exercises:[
-      {name:"臀桥",
-       tip:"夹紧屁股顶髋，顶端停1秒",
-       detail:"仰卧在地上，双脚踩地与肩同宽，膝盖弯曲约90度，双手放身体两侧掌心朝下。发力时夹紧屁股，把髋部往天花板方向顶起来，直到身体从肩膀到膝盖成一条直线。在最高点夹紧屁股停1秒，然后慢慢放下来。全程脚掌不要离地，不要用腰往上拱——发力点是屁股，不是腰。如果感觉腰酸说明臀肌没有发力，试试顶起来之前先用力夹一下屁股再往上推。"},
-      {name:"跪姿俯卧撑",
-       tip:"头到膝一条线，胸快碰地再推起",
-       detail:"双膝跪地（膝盖下面垫个毛巾或枕头会舒服一些），双手撑地比肩略宽，手指朝前。关键是从头到膝盖要保持一条直线，不要撅屁股也不要塌腰。弯曲手肘让胸口慢慢往下沉，直到快碰到地面，然后推起来回到起始位置。下去的时候吸气，推起来时呼气。如果一个都做不了，可以先把手撑在沙发座面上做高位版本，等力量上来了再下到地面做。"},
-      {name:"站姿交替后撤步",
-       tip:"后撤不前迈，前膝不超脚尖",
-       detail:"双脚与肩同宽站直，然后一条腿往后迈一大步，前腿膝盖弯曲但不超过脚尖，后腿膝盖朝地面方向弯但不用碰地。然后后脚蹬地收回来站直，换另一条腿重复。注意是「后撤」不是「前迈」，后撤步对膝盖的剪切力比前迈小很多，这就是为什么选这个动作而不是前弓步。身体全程保持直立，不要前倾。"},
-      {name:"死虫式（简化版）",
-       tip:"对侧手脚伸展，腰紧贴地面",
-       detail:"仰卧在地上，双手伸直指向天花板，双腿抬起屈膝呈90度（大腿垂直地面，小腿平行地面）。然后右手往头顶方向伸直、同时左腿往前伸直（但不碰地），停一下，回到起始位置，然后换左手+右腿。全程最重要的一点：腰部紧贴地面不要拱起来。如果腰拱起来了，说明幅度太大了，缩小伸展范围。这是核心训练里最安全的入门动作。"},
-      {name:"俯卧Y字飞鸟",
-       tip:"肩胛骨往中间夹停2秒，目光看地",
-       detail:"趴在地上，额头轻贴地面（或垫一条毛巾），双臂往前上方伸展成Y字形，大拇指朝上指向天花板。然后慢慢把双臂抬离地面，不用抬很高，3-5厘米就够了，关键是感觉到两块肩胛骨在往脊柱方向靠拢（想象背后夹一支笔）。在最高点停2秒，然后慢慢放下。全程不要抬头看前方，目光始终看地面，否则脖子会代偿发力导致颈椎不舒服。"},
-    ]
-  },
-  {
-    name:"第二阶段·加量", weeks:"第 3-4 周", rounds:3, work:30, rest:15, roundRest:45,
-    exercises:[
-      {name:"单腿臀桥",
-       tip:"一腿伸直抬起，单腿撑地顶髋",
-       detail:"和臀桥一样的起始姿势，但是把一条腿伸直抬起来（可以稍微弯曲也行），只用另一条腿的脚踩地。然后单腿发力顶髋上去，夹紧屁股停1秒再放下。做完一侧换另一侧。单腿版本强度是双腿的近两倍，一开始可能顶不太高，没关系，能顶多高顶多高。如果歪斜得厉害，说明两侧力量不平衡，多练弱的那侧。"},
-      {name:"慢速跪姿俯卧撑",
-       tip:"下去3秒，推起1秒",
-       detail:"动作和第一阶段的跪姿俯卧撑一模一样，但是把速度放慢：下去用3秒钟（心里默数1、2、3），到底之后推起来1秒。这种「慢速离心」的方式能让肌肉在紧张状态下保持更长时间，刺激更大，力量进步也更快。如果你这时候已经能做标准俯卧撑了，就直接做标准版，但同样保持慢速下去。"},
-      {name:"交替侧弓步",
-       tip:"侧迈下沉，感受大腿内侧拉伸",
-       detail:"双脚并拢站直，然后右脚向右侧迈出一大步，同时右腿弯曲下蹲、左腿保持伸直，身体重心移向右侧。感受左腿大腿内侧的拉伸和右腿的发力。然后右脚蹬地回到站直姿势，换左边做。下蹲那条腿的膝盖方向要和脚尖一致，不要内扣。如果柔韧性不够迈不了太远，就小步一点，慢慢加。"},
-      {name:"死虫式（完整版）",
-       tip:"幅度更大，腰部全程贴地",
-       detail:"和简化版一样的起始姿势，但这次手和脚都伸展到离地面更近的位置——手往头顶方向尽量伸直、对侧腿也尽量伸直且更低（但始终不碰地）。幅度越大核心需要越强的力量来稳定腰椎。牢记黄金法则：腰贴地面。如果腰拱起来了就缩小幅度，宁可小幅度做标准也不要大幅度做歪了。"},
-      {name:"T-W-Y组合飞鸟",
-       tip:"三个角度各停2秒，覆盖整个背部",
-       detail:"趴在地上，先做T字：双臂往两侧平伸成T形，大拇指朝上，抬起双臂夹肩胛骨停2秒放下；然后做W字：双肘弯曲约90度，像投降姿势，抬起双臂夹肩胛骨停2秒放下；最后做Y字：双臂往前上方伸成Y形，抬起停2秒放下。T→W→Y连做完算一次。T练中背菱形肌，W练下斜方肌（改善含胸的关键），Y练上背。三个角度合起来基本覆盖了整个背部。"},
-    ]
-  },
-  {
-    name:"第三阶段·燃脂", weeks:"第 5-6 周", rounds:3, work:35, rest:12, roundRest:30,
-    exercises:[
-      {name:"深蹲",
-       tip:"屁股后坐如坐椅子，膝盖不内扣",
-       detail:"双脚与肩同宽或略宽站立，脚尖自然微微外展（约15-30度）。下蹲时想象身后有一把椅子要往后坐，屁股先往后推、然后弯膝下蹲，直到大腿大约与地面平行（或者你能控制到的最低位置），然后脚跟发力站起来。全程注意三点：①膝盖方向和脚尖一致，绝对不要内扣（可以想象用膝盖去推两侧的墙）；②背部保持挺直不要弯腰；③重心放在脚跟和脚掌中部，不要踮到脚尖上。经过前面4周的臀桥和弓步训练，你的膝盖周围肌肉已经有基础了，可以安全地做这个动作。"},
-      {name:"标准俯卧撑",
-       tip:"做不了就继续跪姿，不塌腰",
-       detail:"双手撑地比肩略宽，双脚并拢脚尖撑地，身体从头到脚跟成一条直线。弯曲手肘让身体下沉到胸口快碰地，然后推起来。如果做不了完整的标准版本也完全没关系，继续做跪姿版本但用慢速（下去3秒），效果一样好。不要为了做标准版而塌腰——宁可做跪姿的标准动作，也不要做歪歪扭扭的标准俯卧撑。"},
-      {name:"交替后撤箭步蹲",
-       tip:"后膝接近地面，前膝不超脚尖",
-       detail:"和第一阶段的后撤步一样，但这次下蹲幅度更大——后腿膝盖接近地面（但不碰地），前腿大腿接近与地面平行。这个加深版本对臀肌和大腿的刺激更强。保持身体直立，不要前倾。如果膝盖不舒服，就退回到第一阶段的浅幅度版本。"},
-      {name:"平板支撑转体",
-       tip:"交替转身手指天，核心抗旋转",
-       detail:"从平板支撑开始（双手撑地、手臂伸直，和俯卧撑起始姿势一样）。然后右手离地，身体转向右侧，右手指向天花板，变成侧面的T字支撑形状，停1秒，然后回到平板位置，换左手做。关键是转体的时候身体不要塌下去，用核心的力量抵抗旋转。一开始做不了可以把双脚分开宽一些增加稳定性。"},
-      {name:"超人式+飞鸟",
-       tip:"胸口离地同时飞鸟夹背停3秒",
-       detail:"趴在地上，双臂在前方伸展。同时把上半身（胸口离地）和双腿抬起来，在这个超人飞行的姿势下做飞鸟——双臂从前方往身体两侧划弧收回来，同时夹紧肩胛骨，到最紧点停3秒，然后手臂伸回前方，身体放下。这个动作把核心、下背和上背的训练合在一起了，是前两个阶段飞鸟和超人式的终极合体版。一开始如果太难，可以上半身和下半身交替抬——先只抬上半身做飞鸟，再只抬腿，降低难度。"},
-    ]
-  }
-];
-
-const WARMUP = [
-  {name:"原地踏步", time:"60秒",
-   tip:"膝盖稍抬高，手臂自然摆动",
-   detail:"就是原地走路，但有意识地把膝盖稍微抬高一些（大腿抬到和地面平行就够了），手臂跟着自然前后摆动。目的是把心率带起来、让全身关节热开。不需要快，匀速走就行。"},
-  {name:"站姿髋部画圈", time:"每侧30秒",
-   tip:"屈膝抬腿用膝盖画圈，可扶墙",
-   detail:"单脚站立（可以一只手扶墙或桌子保持平衡），另一条腿屈膝抬起来，用膝盖在空中画圈。先顺时针画5-6个圈，再逆时针画5-6个圈，然后换腿。圈不用画很大，感觉髋关节在灵活地转动就对了。你第一次做可能会觉得髋部咔咔响或者很僵，那就是久坐导致的，多做几天就会顺畅。"},
-];
-
-const STRETCHES = [
-  {name:"婴儿式", time:"30-45秒", priority:true,
-   detail:"跪在地上，屁股坐到脚后跟上，双手尽量往前伸，额头贴地，胸口往下沉。全身放松，自然呼吸。感觉整个背部从上到下都在被温柔地拉开。膝盖不舒服的话在膝盖下垫个枕头。"},
-  {name:"弓步拉髋屈肌", time:"每侧30秒", priority:true,
-   detail:"前脚踩地做弓步，后腿尽量往后伸直，身体立直。你会感觉后腿大腿根前侧（裤兜那个位置）有明显的拉伸感。这块叫髂腰肌，久坐它会缩短变紧，是腰酸背痛的主要元凶。可以把双手举过头顶加大拉伸幅度。"},
-  {name:"仰卧脊柱扭转", time:"每侧30秒", priority:true,
-   detail:"仰卧在地上，双臂往两侧张开成T字。一条腿弯曲，用对侧手把膝盖轻轻拉向身体另一侧（右膝拉向左边），让膝盖尽量碰到地面，碰不到也没关系。头转向相反方向。你可能会听到背部噼里啪啦响几下，那是脊椎小关节在释放气泡，很正常，做完会觉得整个背像换了一副新的。"},
-  {name:"猫牛式", time:"8-10次",
-   detail:"四点跪姿（手在肩正下方，膝在髋正下方）。吸气时慢慢塌腰、抬头、屁股翘起来（牛式）；呼气时拱背、低头、收紧肚子（猫式）。一呼一吸算一次，做8-10次。动作要慢，感受每一节脊椎都在活动。这是久坐人群的腰背万能药。"},
-  {name:"仰卧抱膝", time:"每侧20秒+双腿20秒",
-   detail:"仰卧，一条腿弯曲用双手抱住膝盖往胸口拉，另一条腿伸直放在地上。感觉下背部被温柔地压向地面。左右各做一次，最后双腿同时抱住再做20秒。下背酸的人做完会非常舒服。"},
-  {name:"门框背阔肌拉伸", time:"每侧20秒",
-   detail:"站在门框旁，双手抓住门框（大约在头顶高度），然后屁股往后坐、身体往下沉，手臂伸直。感觉从腋下到腰侧有拉伸感。这拉的是背阔肌，背部最大的一块肌肉。"},
-  {name:"胸部门框拉伸", time:"每侧15秒",
-   detail:"站在门框旁，一只手臂抬到90度（手肘和肩膀同高），前臂搭在门框上。身体往前迈一步，感觉胸口和肩膀前侧的拉伸。久坐含胸的人这块会特别紧，拉开之后马上会觉得呼吸都顺畅了。"},
-  {name:"站姿体前屈", time:"30秒",
-   detail:"双脚与肩同宽站直，慢慢弯腰往下够脚尖，膝盖可以微弯。够不到脚尖完全没关系，感觉到大腿后侧和腰背有拉伸感就对了。自然呼吸，不要憋气，不要上下弹震。"},
-];
-
-const MICRO = [
-  {name:"站姿夹臀", detail:"5-6次，用力夹紧屁股3秒后松开",
-   full:"站直，双脚与肩同宽。用力夹紧屁股保持3秒，然后彻底松开，重复5-6次。久坐最大的问题是臀肌忘了怎么发力，这个动作就是反复提醒它醒过来。"},
-  {name:"站姿飞鸟", detail:"10次，上3秒停3秒下3秒",
-   full:"站直，手臂自然下垂在身体两侧，掌心朝前。慢慢把双臂往两侧打开，同时肩胛骨往中间夹（想象背后夹着一支笔），手臂抬到和肩膀平齐，停3秒，再慢慢放下。做完马上会觉得背挺起来了。"},
-  {name:"坐姿脊柱转体", detail:"每侧15秒",
-   full:"坐在椅子上，双脚踩地。一只手搭在对侧膝盖上，另一只手搭在椅背上，慢慢转身往后看，感觉整个腰背有旋转拉伸感。保持15秒，换另一侧。"},
-  {name:"坐姿翘腿拉梨状肌", detail:"每侧15秒",
-   full:"坐在椅子上，把一只脚的脚踝搭在另一条腿的膝盖上（翘二郎腿的姿势），然后身体稍微前倾。你会感觉搭着的那条腿屁股深处有拉伸感。这块叫梨状肌，久坐它会紧到压迫坐骨神经，屁股坐麻了往往就是它的问题。"},
-];
-
-const WEEKDAYS = ["一","二","三","四","五","六","日"];
-
-function getToday(){ return new Date().toISOString().slice(0,10); }
-function fmtDate(s){ const d=new Date(s+"T00:00:00"); return (d.getMonth()+1)+"/"+d.getDate(); }
-function getWeekDates(offset){
-  const t=new Date(), day=t.getDay();
-  const mon=new Date(t); mon.setDate(t.getDate()-((day+6)%7)+offset*7);
-  return Array.from({length:7},(_,i)=>{const d=new Date(mon);d.setDate(mon.getDate()+i);return d.toISOString().slice(0,10);});
+// === TIMER SYSTEM ===
+let timers={};let timerIntervals={};
+function startTimer(key,secs){
+  if(timerIntervals[key]){clearInterval(timerIntervals[key]);delete timerIntervals[key];delete timers[key];render();return;}
+  timers[key]=secs;
+  timerIntervals[key]=setInterval(()=>{timers[key]--;if(timers[key]<=0){clearInterval(timerIntervals[key]);delete timerIntervals[key];
+    try{const a=new AudioContext();const o=a.createOscillator();const g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=880;o.type='square';g.gain.value=0.15;o.start();o.stop(a.currentTime+0.3);setTimeout(()=>{const o2=a.createOscillator();const g2=a.createGain();o2.connect(g2);g2.connect(a.destination);o2.frequency.value=1100;o2.type='square';g2.gain.value=0.15;o2.start();o2.stop(a.currentTime+0.5);},350);}catch(e){}
+    timers[key]=0;}render();},1000);render();
 }
-function loadRec(date){
-  try{const s=localStorage.getItem("wk:"+date);return s?JSON.parse(s):null;}catch(e){return null;}
-}
-function saveRec(date,rec){ try{localStorage.setItem("wk:"+date,JSON.stringify(rec));}catch(e){} }
-function getRec(date){ return loadRec(date)||{warmup:false,main:[],stretch:false,micro:0,completed:false,rest:false}; }
-function loadPhase(){ try{return parseInt(localStorage.getItem("wk:phase")||"0",10);}catch(e){return 0;} }
-function savePhase(p){ try{localStorage.setItem("wk:phase",String(p));}catch(e){} }
-
-function calcStreak(){
-  let count=0; const d=new Date();
-  const todayRec=getRec(getToday());
-  const todayDone=todayRec.completed||todayRec.rest;
-  if(!todayDone) d.setDate(d.getDate()-1);
-  for(let i=0;i<90;i++){
-    const s=d.toISOString().slice(0,10), r=getRec(s);
-    if(r.completed||r.rest){count++; d.setDate(d.getDate()-1);}
-    else break;
-  }
-  if(todayDone) count++;
-  return count;
+function fmtT(s){if(s===undefined)return'';const m=Math.floor(s/60);const ss=s%60;return(m>0?m+':':'')+(ss<10&&m>0?'0':'')+ss;}
+function timerHTML(key,secs){
+  const running=!!timerIntervals[key];const val=timers[key];const done=val===0&&!running;
+  return`<span class="tm"><button class="tm-b ${running?'running':''}" onclick="event.stopPropagation();startTimer('${key}',${secs})">${running?'■ 停止':done?'↻ 重来':secs+'秒'}</button>${val!==undefined?`<span class="tm-d ${done?'done':''}">${done?'完成':fmtT(val)}</span>`:''}</span>`;
 }
 
-let state = {
-  phase: loadPhase(), weekOffset:0, selectedDate:getToday(),
-  expanded:"main", openDetails:{}
-};
+const P=[
+{name:"PHASE 1 · 唤醒",weeks:"WEEK 1-4",rounds:2,work:25,rest:20,rr:60,ex:[
+{n:"臀桥",t:"夹紧屁股顶髋，顶端停1秒",s:25,d:"仰卧在地上，双脚踩地与肩同宽，膝盖弯曲约90度，双手放身体两侧掌心朝下。发力时夹紧屁股，把髋部往天花板方向顶起来，直到身体从肩膀到膝盖成一条直线。在最高点夹紧屁股停1秒，然后慢慢放下来。全程脚掌不要离地，不要用腰往上拱——发力点是屁股，不是腰。如果感觉腰酸说明臀肌没有发力，试试顶起来之前先用力夹一下屁股再往上推。"},
+{n:"跪姿俯卧撑",t:"头到膝一条线，胸快碰地再推起",s:25,d:"双膝跪地（膝盖下面垫个毛巾或枕头），双手撑地比肩略宽，手指朝前。从头到膝盖保持一条直线，不要撅屁股也不要塌腰。弯曲手肘让胸口慢慢下沉到快碰地，然后推起来。下去吸气，推起来呼气。做不了的话可以先把手撑在沙发座面上做高位版本。"},
+{n:"死虫式（简化版）",t:"对侧手脚伸展，腰紧贴地面",s:25,d:"仰卧，双手伸直指向天花板，双腿抬起屈膝呈90度。然后右手往头顶方向伸直、同时左腿往前伸直（但不碰地），停一下回到起始位置，换左手+右腿。全程腰部紧贴地面不要拱起来。如果腰拱起来了说明幅度太大，缩小伸展范围。这是核心训练里最安全的入门动作。"},
+{n:"基础卷腹",t:"只抬肩膀离地，下背始终贴地",s:25,d:"仰卧，双脚踩地膝盖弯曲，双手轻放耳朵旁边（不要抱头）。呼气时收紧腹肌，只把肩膀和上背抬离地面，下背始终贴地。想象肋骨往骨盆方向靠拢。抬到最高点停1秒再慢慢放下。不需要抬很高，感觉到腹肌在发力就对了。不要用手拉脖子。"},
+{n:"超人式",t:"上下半身同时抬离地面停2秒",s:25,d:"趴在地上，双臂往前伸展，双腿伸直。同时把上半身（胸口离地）和双腿抬起来，在最高点停2秒再慢慢放下。不用抬很高，感觉到背部和臀部同时在发力就对了。全程不要抬头看前方，目光看地面，保护颈椎。"},
+]},
+{name:"PHASE 2 · 加量",weeks:"WEEK 5-8",rounds:3,work:30,rest:15,rr:45,ex:[
+{n:"单腿臀桥",t:"一腿伸直抬起，单腿撑地顶髋",s:30,d:"和臀桥一样的起始姿势，但一条腿伸直抬起来，只用另一条腿踩地。单腿发力顶髋上去，夹紧屁股停1秒再放下。做完一侧换另一侧。单腿版本强度是双腿的近两倍，一开始顶不太高没关系。如果歪斜得厉害说明两侧力量不平衡，多练弱的那侧。"},
+{n:"慢速跪姿俯卧撑",t:"下去3秒，推起1秒",s:30,d:"动作和第一阶段一样，但速度放慢：下去用3秒（心里默数1、2、3），到底后推起来1秒。这种慢速离心让肌肉紧张时间更长，刺激更大。如果已经能做标准俯卧撑就直接做标准版，同样保持慢速下去。"},
+{n:"死虫式（完整版）",t:"幅度更大，腰部全程贴地",s:30,d:"和简化版一样的起始姿势，但手和脚都伸展到离地面更近的位置——手往头顶方向尽量伸直、对侧腿也尽量伸直且更低（始终不碰地）。幅度越大核心需要越强的力量来稳定腰椎。腰贴地面是黄金法则，如果腰拱起来了就缩小幅度。"},
+{n:"卷腹触膝",t:"抬起时双手碰膝盖，增加幅度",s:30,d:"仰卧屈膝，双手放在大腿上。呼气时收腹卷起，双手沿大腿滑到膝盖，停1秒再慢慢放下。比基础卷腹幅度更大、腹肌收缩更充分。注意是用腹肌的力量把身体卷起来，不是用手拉自己。"},
+{n:"超人式+飞鸟",t:"胸口离地同时飞鸟夹背停3秒",s:30,d:"趴着双臂前伸。同时抬起上半身和双腿，在这个超人姿势下做飞鸟——双臂从前方往身体两侧划弧收回，夹紧肩胛骨停3秒，然后手臂伸回前方身体放下。这把核心、下背和上背训练合在一起了。太难的话可以上下半身交替抬。"},
+{n:"仰卧交替抬腿",t:"双腿伸直交替抬起，腰贴地",s:30,d:"仰卧，双腿伸直，双手放身体两侧或垫在臀部下面。一条腿抬到约45度角，然后慢慢放下的同时另一条腿抬起来，像剪刀交替。全程腰部紧贴地面（关键！），如果腰拱起来了就把腿抬高一些减小难度。专练下腹。"},
+]},
+{name:"PHASE 3 · 燃脂",weeks:"WEEK 9-12",rounds:3,work:35,rest:12,rr:30,ex:[
+{n:"深蹲",t:"屁股后坐如坐椅子，膝盖不内扣",s:35,d:"双脚与肩同宽站立，脚尖微微外展。下蹲时想象往后坐椅子，屁股先往后推再弯膝下蹲，到大腿约与地面平行后脚跟发力站起来。膝盖方向和脚尖一致不要内扣，背部挺直不弯腰，重心在脚跟和脚掌中部。经过前8周训练膝盖周围已经有基础了。"},
+{n:"标准俯卧撑",t:"做不了就继续跪姿，不塌腰",s:35,d:"双手撑地比肩略宽，脚尖撑地，身体从头到脚跟成一条线。弯肘下沉到胸口快碰地再推起。做不了就继续跪姿慢速版，效果一样好。宁可做标准的跪姿版也不要做歪歪扭扭的标准版。"},
+{n:"平板支撑转体",t:"交替转身手指天，核心抗旋转",s:35,d:"平板支撑姿势（手臂伸直），右手离地身体转向右侧，右手指向天花板成T字形，停1秒回到平板位置换左手做。转体时身体不要塌，用核心抗旋转。做不了可以把双脚分开宽一些增加稳定性。"},
+{n:"卷腹击打",t:"抬起时加出拳动作，带动核心旋转",s:35,d:"仰卧屈膝，双手握拳在胸前。呼气时收腹卷起，同时一只手往对侧方向出拳（右拳打向左膝方向），感受核心的旋转发力，回来换另一侧出拳。这个动作结合了你的拳击基础，既练腹直肌又练腹斜肌，很燃。"},
+{n:"交替超人",t:"对侧手脚同时抬起，交替进行",s:35,d:"趴在地上，右手和左腿同时抬起，停2秒放下，换左手和右腿。对侧发力对核心稳定性要求更高。保持目光看地面不要仰头。动作要慢要控制，不要靠惯性甩。"},
+{n:"仰卧自行车（慢速）",t:"慢速蹬腿，像骑自行车一样",s:35,d:"仰卧，双手轻放耳旁，双腿抬起。一条腿伸直的同时另一条腿屈膝收向胸口，同时上半身扭转用对侧手肘去碰膝盖方向。交替进行像骑自行车。关键是要慢——每一下用3秒完成，感受腹肌的持续收缩。"},
+]}];
+
+const WU=[
+{n:"原地踏步摆臂",t:"30s",s:30,tip:"原地走路，膝盖稍抬高，手臂自然前后大幅摆动",d:"就是原地走路但有意识地把膝盖抬高一些，手臂跟着大幅度前后摆动。目的是把心率带起来、让全身关节热开。"},
+{n:"站姿髋部画圈",t:"每侧15s",s:15,tip:"单脚站屈膝抬腿用膝盖画圈，可扶墙",d:"单脚站（可扶墙），另一腿屈膝抬起来用膝盖画圈。顺时针逆时针各5-6圈换腿。第一次做可能髋部咔咔响，那是久坐导致的。"},
+{n:"站姿体侧扭转",t:"30s",s:30,tip:"双手抬起，左右转腰，转到底停一下",d:"站直，双手抬到胸前交叉或自然抬起。保持下半身不动，上半身慢慢向左转到底停一下，再向右转到底。感觉整个腰腹都在被拧动。"},
+{n:"站姿体侧屈",t:"每侧15s",s:15,tip:"一手叉腰一手举过头顶，左右侧弯",d:"站直，右手举过头顶，身体慢慢往左侧弯，感觉右侧腰腹有拉伸。停几秒换另一侧。不要前倾或后仰，纯粹往侧面弯。"},
+{n:"髋部画圆",t:"30s",s:30,tip:"双手叉腰，胯部画大圈",d:"双脚与肩同宽站直，双手叉腰。胯部往前、右、后、左画大圈，像呼啦圈一样。顺时针逆时针各画8-10圈。把整个腰髋都转开。"},
+];
+
+const ST=[
+{n:"婴儿式",t:"30-45s",s:40,p:true,d:"跪在地上，屁股坐到脚后跟上，双手尽量往前伸，额头贴地，胸口往下沉。全身放松自然呼吸。膝盖不舒服的话垫个枕头。"},
+{n:"仰卧脊柱扭转",t:"每侧30s",s:30,p:true,d:"仰卧，双臂T字张开。一腿弯曲用对侧手把膝盖拉向另一侧，头转反方向。背部可能会噼啪响，那是脊椎小关节释放气泡，正常。"},
+{n:"仰卧抱膝",t:"每侧20s+双腿20s",s:20,p:true,d:"仰卧，一腿弯曲双手抱膝往胸口拉，另一腿伸直。感觉下背被压向地面。左右各做一次最后双腿一起抱。"},
+{n:"仰卧4字拉伸",t:"每侧25s",s:25,d:"仰卧，左脚踝搭在右膝上成4字形，双手抱住右大腿往胸口拉。感觉左侧臀部深处拉伸。换另一侧。这个替代了弓步拉髋，躺着做对膝盖更友好。"},
+{n:"猫牛式（选做）",t:"8-10次",s:50,d:"四点跪姿。吸气塌腰抬头翘屁股（牛式）；呼气拱背低头收紧肚子（猫式）。做8-10次。如果搞不清楚动作可以跳过这个。"},
+];
+
+const MI=[
+{n:"站姿夹臀",de:"5-6次，夹3秒松开",d:"站直用力夹紧屁股3秒再松开，重复5-6次。提醒久坐沉睡的臀肌醒过来。"},
+{n:"站姿飞鸟",de:"10次，慢速",d:"双臂侧平举，掌心朝前，肩胛骨夹紧停3秒再放下。做完马上觉得背挺起来了。"},
+{n:"坐姿脊柱转体",de:"每侧15s",d:"坐椅子上一手搭对侧膝盖一手搭椅背，慢慢转身往后看。"},
+{n:"坐姿翘腿拉梨状肌",de:"每侧15s",d:"脚踝搭对侧膝盖（翘二郎腿），身体前倾。拉屁股深处的梨状肌。"},
+];
+
+const WD=["一","二","三","四","五","六","日"];
+const IC={warmup:"var(--gold)",main:"var(--cyan)",stretch:"var(--coral)",micro:"var(--dim)"};
+
+function td(){return new Date().toISOString().slice(0,10)}
+function fd(s){const d=new Date(s+"T00:00:00");return(d.getMonth()+1)+"."+d.getDate()}
+function gw(o){const t=new Date(),day=t.getDay(),m=new Date(t);m.setDate(t.getDate()-((day+6)%7)+o*7);return Array.from({length:7},(_,i)=>{const d=new Date(m);d.setDate(m.getDate()+i);return d.toISOString().slice(0,10)})}
+function lr(d){try{const s=localStorage.getItem("wk:"+d);return s?JSON.parse(s):null}catch(e){return null}}
+function sr(d,r){try{localStorage.setItem("wk:"+d,JSON.stringify(r))}catch(e){}}
+function gr(d){return lr(d)||{warmup:false,main:[],stretch:false,micro:0,completed:false,rest:false}}
+function lp(){try{return parseInt(localStorage.getItem("wk:phase")||"0",10)}catch(e){return 0}}
+function sp(p){try{localStorage.setItem("wk:phase",String(p))}catch(e){}}
+function cs(){let c=0;const d=new Date(),tr=gr(td()),done=tr.completed||tr.rest;if(!done)d.setDate(d.getDate()-1);for(let i=0;i<90;i++){const s=d.toISOString().slice(0,10),r=gr(s);if(r.completed||r.rest){c++;d.setDate(d.getDate()-1)}else break}if(done)c++;return c}
+
+let S={phase:lp(),wo:0,sel:td(),exp:"main",cd:{}};
 
 function render(){
-  const today=getToday(), phase=PHASES[state.phase], weekDates=getWeekDates(state.weekOffset);
-  const rec=getRec(state.selectedDate), streak=calcStreak();
-  const completedDays=weekDates.filter(d=>{const r=getRec(d);return r.completed||r.rest;}).length;
+const today=td(),ph=P[S.phase],wd=gw(S.wo),rec=gr(S.sel),streak=cs();
+const cd=wd.filter(d=>{const r=gr(d);return r.completed||r.rest}).length;
+const mD=(rec.main||[]).length,mT=ph.ex.length;
+let h=`<div class="hd"><div class="hd-in"><h1>特别高度机密行动组</h1><div class="sk"><div class="sk-n">${streak}</div><div class="sk-l">连续</div></div></div>
+<div class="pb">${P.map((p,i)=>`<div class="pt ${i===S.phase?'a':''}" onclick="xp(${i})">${p.name}<small>${p.weeks}</small></div>`).join("")}</div></div>
+<div class="wn"><div class="wh"><button class="nb" onclick="nw(-1)">‹</button><span>本周 ${cd}/7${S.wo!==0?`<button class="bb" onclick="gt()">回到今天</button>`:''}</span><button class="nb" onclick="nw(1)">›</button></div>
+<div class="wr">${wd.map((d,i)=>{const r=gr(d),dn=r.completed||r.rest,sl=d===S.sel,it=d===today;
+return`<div class="db ${sl?'s':''} ${it?'t':''} ${dn?'dn':''}" onclick="sd('${d}')"><div class="dl">${WD[i]}</div><div class="dd">${fd(d)}</div><div class="ds">${dn?(r.rest?'🌙':'✓'):''}</div></div>`}).join("")}</div></div>
+<div class="ct">`;
 
-  let html = `
-  <div class="header">
-    <div class="header-top">
-      <div>
-        <h1>特别高度机密行动组</h1>
-      </div>
-      <div class="streak-box">
-        <div class="streak-num">${streak}</div>
-        <div class="streak-label">连续天数</div>
-      </div>
-    </div>
-    <div class="phase-bar">
-      ${PHASES.map((p,i)=>`
-        <div class="phase-btn ${i===state.phase?'active':''}" onclick="setPhase(${i})">
-          ${p.name}<small>${p.weeks}</small>
-        </div>`).join("")}
-    </div>
-  </div>
-
-  <div class="week-nav">
-    <div class="week-header">
-      <button class="nav-btn" onclick="navWeek(-1)">‹</button>
-      <span>本周完成 ${completedDays}/7${state.weekOffset!==0?`<button class="back-btn" onclick="goToday()">回到今天</button>`:''}</span>
-      <button class="nav-btn" onclick="navWeek(1)">›</button>
-    </div>
-    <div class="week-row">
-      ${weekDates.map((d,i)=>{
-        const r=getRec(d), done=r.completed||r.rest;
-        const sel=d===state.selectedDate, isT=d===today;
-        return `<div class="day-btn ${sel?'sel':''} ${isT?'today':''} ${done?'done':''}" onclick="selectDate('${d}')">
-          <div class="dl">${WEEKDAYS[i]}</div>
-          <div class="dd">${fmtDate(d)}</div>
-          <div class="ds">${done?(r.rest?'🌙':'✓'):''}</div>
-        </div>`;
-      }).join("")}
-    </div>
-  </div>
-
-  <div class="content">`;
-
-  if(rec.rest){
-    html+=`<div class="rest-view">
-      <div class="emoji">🌙</div>
-      <div class="rtitle">休息日</div>
-      <div class="rsub">肌肉恢复时在消耗脂肪，建议做5-10分钟拉伸</div>
-      <button class="rest-btn" onclick="toggleRest()">改为训练日</button>
-    </div>`;
-  } else {
-    html+=`<div class="rest-toggle"><button class="rest-btn" onclick="toggleRest()">🌙 标记为休息日</button></div>`;
-
-    // Warmup section
-    html+=renderSection("warmup","热身","2 分钟",`var(--yellow)`, ()=>{
-      let c=WARMUP.map((w,i)=>`
-        <div class="warmup-row">
-          <div class="warmup-time">${w.time}</div>
-          <div>
-            <div class="warmup-name">${w.name}</div>
-            <div class="warmup-tip">${w.tip}</div>
-            ${renderDetailToggle("warmup_"+i, w.detail)}
-          </div>
-        </div>`).join("");
-      c+=`<button class="complete-btn ${rec.warmup?'on':'off'}" onclick="toggleWarmup()">${rec.warmup?'✓ 已完成热身':'完成热身'}</button>`;
-      return c;
-    });
-
-    // Main training
-    html+=renderSection("main",`主训练 · ${phase.name}`,
-      `${phase.rounds}轮 · 动作${phase.work}秒 · 休息${phase.rest}秒 · 轮间${phase.roundRest}秒`,
-      `var(--red)`, ()=>{
-      return phase.exercises.map((ex,i)=>{
-        const done=(rec.main||[]).includes(i);
-        return `<div class="exercise-item" onclick="toggleMain(${i})">
-          <div class="checkbox ${done?'checked':''}">✓</div>
-          <div style="flex:1">
-            <div class="ex-name ${done?'checked':''}">${ex.name}</div>
-            <div class="ex-tip">${ex.tip}</div>
-            ${renderDetailToggle("main_"+state.phase+"_"+i, ex.detail)}
-          </div>
-        </div>`;
-      }).join("");
-    });
-
-    // Stretch
-    html+=renderSection("stretch","拉伸","5 分钟 · 挑 4-5 个 · 标「必做」优先",`var(--purple)`, ()=>{
-      let c=STRETCHES.map((s,i)=>`
-        <div class="stretch-row">
-          ${s.priority?'<span class="stretch-tag">必做</span>':''}
-          <span class="stretch-name">${s.name}</span>
-          <span class="stretch-time">${s.time}</span>
-        </div>
-        ${s.detail?renderDetailToggle("stretch_"+i, s.detail, true):''}
-      `).join("");
-      c+=`<button class="complete-btn ${rec.stretch?'on':'off'}" onclick="toggleStretch()">${rec.stretch?'✓ 已完成拉伸':'完成拉伸'}</button>`;
-      return c;
-    });
-
-    // Micro
-    html+=renderSection("micro","久坐微动","每坐1小时做一次 · 约1分钟",`var(--cyan)`, ()=>{
-      let c=MICRO.map((m,i)=>`
-        <div class="micro-row">
-          <div class="micro-name">${m.name}</div>
-          <div class="micro-detail">${m.detail}</div>
-          ${renderDetailToggle("micro_"+i, m.full)}
-        </div>`).join("");
-      c+=`<div class="micro-counter">
-        <div><span class="micro-num">${rec.micro||0}</span><span class="micro-label">次微动</span></div>
-        <button class="micro-add" onclick="addMicro()">+1</button>
-      </div>`;
-      return c;
-    });
-
-    if(rec.completed){
-      html+=`<div class="done-banner">
-        <div class="emoji">💪</div>
-        <div class="dtitle">今日训练完成！</div>
-        <div class="dsub">坚持就是胜利，明天见</div>
-      </div>`;
-    }
-  }
-  html+=`</div>`;
-  document.getElementById("app").innerHTML=html;
+if(rec.rest){h+=`<div class="rv"><div class="re">🌙</div><div class="rtt">休息日</div><div class="rs">肌肉恢复时在消耗脂肪<br>建议做5-10分钟拉伸</div><button class="rb" onclick="tr()">改为训练日</button></div>`}
+else{
+h+=`<div class="rt"><button class="rb" onclick="tr()">🌙 休息日</button></div>`;
+// Warmup
+h+=rs("warmup","热身","2-3 分钟",()=>{
+let c=WU.map((w,i)=>`<div class="wu"><div class="wu-wrap"><div class="wt">${w.t}</div><div style="flex:1"><div class="wna">${w.n}</div><div class="wtp">${w.tip}</div>${rd('wu'+i,w.d)}</div></div>${timerHTML('wu'+i,w.s)}</div>`).join("");
+c+=`<button class="cb-btn ${rec.warmup?'on':'off'}" onclick="tw()">${rec.warmup?'✓ 已完成':'开始热身'}</button>`;return c});
+// Main
+h+=rs("main",ph.name,`${ph.rounds}轮 · ${ph.work}秒动作 · ${ph.rest}秒休息`,()=>{
+let c=ph.ex.map((e,i)=>{const dn=(rec.main||[]).includes(i);
+return`<div class="ei"><div class="ei-wrap" onclick="tm(${i})"><div class="cb ${dn?'ck':''}">✓</div><div style="flex:1"><div class="en ${dn?'ck':''}">${e.n}</div><div class="et">${e.t}</div>${rd('m'+S.phase+'_'+i,e.d)}</div></div>${timerHTML('m'+S.phase+'_'+i,e.s)}</div>`}).join("");
+c+=`<div class="pg"><div class="pf" style="width:${mT?mD/mT*100:0}%"></div></div>`;return c});
+// Stretch
+h+=rs("stretch","拉伸","5 分钟 · 挑几个做",()=>{
+let c=ST.map((s,i)=>`<div class="si-r"><div class="si-t">${s.p?'<span class="stag">必做</span>':''}<span class="sn">${s.n}</span><span class="sti">${s.t}</span>${timerHTML('st'+i,s.s)}</div>${rd('st'+i,s.d)}</div>`).join("");
+c+=`<button class="cb-btn ${rec.stretch?'on':'off'}" onclick="ts()">${rec.stretch?'✓ 已完成':'完成拉伸'}</button>`;return c});
+// Micro
+h+=rs("micro","久坐微动","每小时 1 次",()=>{
+let c=MI.map((m,i)=>`<div class="mr"><div class="mn">${m.n}</div><div class="md">${m.de}</div>${rd('mi'+i,m.d)}</div>`).join("");
+c+=`<div class="mc"><div><span class="mc-n">${rec.micro||0}</span><span class="mc-l">次</span></div><button class="mc-a" onclick="am()">+1</button></div>`;return c});
+if(rec.completed)h+=`<div class="dn-b"><div class="de">⚓</div><div class="dtt">任务完成</div><div class="dss">深海的回响，明天继续</div></div>`;
 }
+h+=`</div>`;document.getElementById("app").innerHTML=h}
 
-function renderSection(key,title,sub,color,contentFn){
-  const open=state.expanded===key;
-  return `<div class="section">
-    <div class="section-header" onclick="toggleSection('${key}')">
-      <div style="display:flex;align-items:center">
-        <div class="bar" style="background:${color}"></div>
-        <div><div class="stitle">${title}</div><div class="ssub">${sub}</div></div>
-      </div>
-      <span class="arrow ${open?'open':''}">›</span>
-    </div>
-    ${open?`<div class="section-body">${contentFn()}</div>`:''}
-  </div>`;
-}
+function rs(k,t,s,fn){const o=S.exp===k,c=IC[k];return`<div class="sc"><div class="sh" onclick="te('${k}')"><div style="display:flex;align-items:center"><div class="si" style="background:${c}"></div><div><div class="st">${t}</div><div class="ss">${s}</div></div></div><span class="ar ${o?'o':''}">›</span></div>${o?`<div class="sb">${fn()}</div>`:''}</div>`}
+function rd(k,t){const c=S.cd[k];return`<div><span class="dt" onclick="event.stopPropagation();tg('${k}')">${c?'▸ 展开':'▾ 收起'}</span>${c?'':`<div class="ed">${t}</div>`}</div>`}
 
-function renderDetailToggle(key, text, standalone){
-  const open=state.openDetails[key];
-  const wrapper = standalone ? 'style="padding:0 0 8px 0"' : '';
-  return `<div ${wrapper}>
-    <span class="detail-toggle" onclick="event.stopPropagation();toggleDetail('${key}')">${open?'▾ 收起说明':'▸ 详细做法'}</span>
-    ${open?`<div class="ex-detail">${text}</div>`:''}
-  </div>`;
-}
-
-// Actions
-window.setPhase=function(i){state.phase=i;savePhase(i);render();};
-window.navWeek=function(d){state.weekOffset+=d;render();};
-window.goToday=function(){state.weekOffset=0;state.selectedDate=getToday();render();};
-window.selectDate=function(d){state.selectedDate=d;render();};
-window.toggleSection=function(k){state.expanded=state.expanded===k?null:k;render();};
-window.toggleDetail=function(k){state.openDetails[k]=!state.openDetails[k];render();};
-
-window.toggleWarmup=function(){
-  const r=getRec(state.selectedDate); r.warmup=!r.warmup;
-  r.completed=r.warmup&&r.stretch&&(r.main||[]).length>=PHASES[state.phase].exercises.length;
-  saveRec(state.selectedDate,r); render();
-};
-window.toggleStretch=function(){
-  const r=getRec(state.selectedDate); r.stretch=!r.stretch;
-  r.completed=r.warmup&&r.stretch&&(r.main||[]).length>=PHASES[state.phase].exercises.length;
-  saveRec(state.selectedDate,r); render();
-};
-window.toggleMain=function(i){
-  const r=getRec(state.selectedDate); const arr=[...(r.main||[])];
-  if(arr.includes(i))arr.splice(arr.indexOf(i),1); else arr.push(i);
-  r.main=arr;
-  r.completed=r.warmup&&r.stretch&&arr.length>=PHASES[state.phase].exercises.length;
-  saveRec(state.selectedDate,r); render();
-};
-window.addMicro=function(){
-  const r=getRec(state.selectedDate); r.micro=(r.micro||0)+1;
-  saveRec(state.selectedDate,r); render();
-};
-window.toggleRest=function(){
-  const r=getRec(state.selectedDate);
-  r.rest=!r.rest; r.completed=false; r.warmup=false; r.main=[]; r.stretch=false;
-  saveRec(state.selectedDate,r); render();
-};
-
+window.xp=function(i){S.phase=i;sp(i);render()};
+window.nw=function(d){S.wo+=d;render()};
+window.gt=function(){S.wo=0;S.sel=td();render()};
+window.sd=function(d){S.sel=d;render()};
+window.te=function(k){S.exp=S.exp===k?null:k;render()};
+window.tg=function(k){S.cd[k]=!S.cd[k];render()};
+window.tw=function(){const r=gr(S.sel);r.warmup=!r.warmup;r.completed=r.warmup&&r.stretch&&(r.main||[]).length>=P[S.phase].ex.length;sr(S.sel,r);render()};
+window.ts=function(){const r=gr(S.sel);r.stretch=!r.stretch;r.completed=r.warmup&&r.stretch&&(r.main||[]).length>=P[S.phase].ex.length;sr(S.sel,r);render()};
+window.tm=function(i){const r=gr(S.sel);const a=[...(r.main||[])];if(a.includes(i))a.splice(a.indexOf(i),1);else a.push(i);r.main=a;r.completed=r.warmup&&r.stretch&&a.length>=P[S.phase].ex.length;sr(S.sel,r);render()};
+window.am=function(){const r=gr(S.sel);r.micro=(r.micro||0)+1;sr(S.sel,r);render()};
+window.tr=function(){const r=gr(S.sel);r.rest=!r.rest;r.completed=false;r.warmup=false;r.main=[];r.stretch=false;sr(S.sel,r);render()};
 render();
 </script>
 </body>
