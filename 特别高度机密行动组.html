@@ -33,7 +33,6 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100
 -webkit-font-smoothing:antialiased;
 background-image:radial-gradient(circle at 50% 0%,rgba(0,200,220,0.04) 0%,transparent 60%);
 }
-/* HEADER */
 .hd{padding:0;position:sticky;top:0;z-index:10;background:rgba(22,27,38,0.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:2px solid var(--cyan)}
 .hd-in{padding:20px 18px 12px;display:flex;justify-content:space-between;align-items:center}
 .hd h1{font-family:var(--f);font-size:14px;font-weight:800;color:var(--cyan);letter-spacing:3px;text-transform:uppercase}
@@ -41,13 +40,11 @@ background-image:radial-gradient(circle at 50% 0%,rgba(0,200,220,0.04) 0%,transp
 .sk{display:flex;align-items:center;gap:5px;background:var(--cyan-g);border:1px solid rgba(0,200,220,0.2);padding:4px 12px}
 .sk-n{font-family:var(--f);font-size:20px;font-weight:800;color:var(--cyan);line-height:1}
 .sk-l{font-size:8px;color:var(--cyan);letter-spacing:2px;font-weight:700;font-family:var(--f)}
-/* PHASE */
 .pb{display:flex;gap:0;border-top:1px solid var(--border)}
 .pt{flex:1;padding:9px 4px;background:none;border:none;border-right:1px solid var(--border);color:var(--dim);font-family:var(--f);font-size:10px;text-align:center;cursor:pointer;transition:.2s;font-weight:600;letter-spacing:1px}
 .pt:last-child{border-right:none}
 .pt.a{background:var(--cyan);color:var(--bg)}
 .pt small{display:block;font-size:8px;margin-top:2px;opacity:.6;font-weight:400}
-/* WEEK */
 .wn{padding:12px 18px 6px}
 .wh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .wh span{font-size:10px;color:var(--dim);font-weight:600;letter-spacing:1px;font-family:var(--f)}
@@ -66,9 +63,7 @@ background-image:radial-gradient(circle at 50% 0%,rgba(0,200,220,0.04) 0%,transp
 .db.s.dn .dd{color:var(--bg)}
 .db .ds{font-size:8px;margin-top:1px;min-height:12px;color:var(--coral)}
 .db.s .ds{color:rgba(0,0,0,.6)}
-/* CONTENT */
 .ct{padding:6px 14px}
-/* SECTION */
 .sc{margin-bottom:8px;background:var(--card);border:1px solid var(--border);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);overflow:hidden}
 .sh{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;cursor:pointer;user-select:none;border-bottom:1px solid var(--border2)}
 .sh .si{width:3px;height:20px;margin-right:10px;flex-shrink:0}
@@ -77,25 +72,33 @@ background-image:radial-gradient(circle at 50% 0%,rgba(0,200,220,0.04) 0%,transp
 .sh .ar{font-size:10px;color:var(--dim2);transition:transform .2s;font-weight:800}
 .sh .ar.o{transform:rotate(90deg)}
 .sb{padding:10px 14px}
-/* EXERCISE */
-.ei{display:flex;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border2);cursor:pointer;user-select:none}
+.ei{display:flex;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border2);user-select:none}
 .ei:last-child{border-bottom:none}
-.ei-wrap{display:flex;align-items:flex-start;width:100%}
+.ei-wrap{display:flex;align-items:flex-start;flex:1;cursor:pointer}
 .cb{width:20px;height:20px;border:1.5px solid rgba(0,200,220,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:10px;margin-top:1px;transition:.15s;font-size:10px;font-weight:800;color:transparent}
 .cb.ck{border:none;background:var(--coral);color:#fff;box-shadow:0 0 8px var(--coral-glow)}
+.cb.half{border-color:var(--coral);color:var(--coral)}
 .en{font-family:var(--f);font-size:13px;font-weight:700;color:var(--text);letter-spacing:.5px}
 .en.ck{color:var(--dim2);text-decoration:line-through;font-weight:500}
 .et{font-size:10px;color:var(--dim);margin-top:2px;line-height:1.5}
 .dt{font-size:9px;color:var(--cyan);cursor:pointer;margin-top:4px;display:inline-block;user-select:none;font-weight:700;letter-spacing:1px;font-family:var(--f)}
 .ed{font-size:10.5px;color:var(--text2);margin-top:6px;line-height:1.8;padding:8px 10px;background:var(--bg2);border-left:2px solid var(--cyan)}
-/* TIMER */
-.tm{display:flex;align-items:center;gap:6px;margin-top:0;margin-left:auto;flex-shrink:0}
+/* TIMER + ROUND COMBO */
+.tm-area{display:flex;flex-direction:column;align-items:flex-end;gap:4px;margin-left:auto;flex-shrink:0}
+.tm{display:flex;align-items:center;gap:6px}
 .tm-b{font-family:var(--f);font-size:12px;font-weight:700;padding:8px 14px;cursor:pointer;letter-spacing:1px;border:1.5px solid var(--cyan);background:transparent;color:var(--cyan);transition:.15s;min-width:56px;text-align:center}
 .tm-b:active{background:var(--cyan);color:var(--bg)}
 .tm-b.running{border-color:var(--coral);color:var(--coral);animation:pulse 1s infinite}
 .tm-d{font-family:var(--f);font-size:14px;font-weight:800;color:var(--cyan);min-width:40px;text-align:center}
-.tm-d.done{color:var(--coral)}
+.tm-d.done{color:var(--coral);cursor:pointer}
+.tm-d.done:active{opacity:.6}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+/* ROUND DOTS inline */
+.rd-row{display:flex;align-items:center;gap:5px}
+.rd-dot{width:9px;height:9px;border:1.5px solid var(--dim2);transition:all .2s}
+.rd-dot.done{background:var(--coral);border-color:var(--coral);box-shadow:0 0 5px var(--coral-glow)}
+.rd-dot.cur{border-color:var(--cyan);box-shadow:0 0 5px var(--cyan-glow)}
+.rd-lbl{font-family:var(--f);font-size:8px;font-weight:700;color:var(--dim);letter-spacing:1px}
 /* BUTTONS */
 .cb-btn{width:100%;margin-top:10px;padding:10px;font-size:11px;font-weight:700;cursor:pointer;transition:.15s;font-family:var(--f);letter-spacing:2px;text-transform:uppercase}
 .cb-btn.off{border:1.5px dashed var(--border);background:transparent;color:var(--dim)}
@@ -132,26 +135,111 @@ background-image:radial-gradient(circle at 50% 0%,rgba(0,200,220,0.04) 0%,transp
 .wna{font-size:12px;font-weight:700}.wtp{font-size:10px;color:var(--dim);margin-top:2px}
 /* PROGRESS */
 .pg{height:2px;background:var(--border);margin-top:10px;overflow:hidden}.pf{height:100%;background:linear-gradient(90deg,var(--cyan),var(--coral));transition:width .3s}
+/* AUDIO INIT */
+.audio-init{position:fixed;bottom:0;left:0;right:0;z-index:200;background:linear-gradient(180deg,transparent,rgba(22,27,38,0.98) 20%);padding:30px 18px 28px;text-align:center;transition:transform .4s ease,opacity .4s ease}
+.audio-init.hide{transform:translateY(100%);opacity:0;pointer-events:none}
+.audio-init-text{font-size:11px;color:var(--dim);margin-bottom:12px;font-family:var(--f);letter-spacing:.5px}
+.audio-init-btn{padding:12px 32px;border:2px solid var(--cyan);background:transparent;color:var(--cyan);font-family:var(--f);font-size:12px;font-weight:800;cursor:pointer;letter-spacing:2px;text-transform:uppercase;transition:.15s}
+.audio-init-btn:active{background:var(--cyan);color:var(--bg)}
+/* ALL-DONE TOAST */
+.all-toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.8);background:rgba(22,27,38,0.96);border:2px solid var(--coral);padding:28px 36px;z-index:100;text-align:center;opacity:0;pointer-events:none;transition:all .3s cubic-bezier(0.34,1.56,0.64,1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.all-toast.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto}
+.all-toast .at-icon{font-size:36px;margin-bottom:10px}
+.all-toast .at-title{font-family:var(--f);font-size:16px;font-weight:800;color:var(--coral);letter-spacing:2px;margin-bottom:6px}
+.all-toast .at-sub{font-size:11px;color:var(--dim);line-height:1.6}
+.all-toast .at-btn{margin-top:16px;padding:10px 28px;border:none;background:var(--cyan);color:var(--bg);font-family:var(--f);font-size:11px;font-weight:800;cursor:pointer;letter-spacing:2px;text-transform:uppercase}
+.at-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:99;opacity:0;pointer-events:none;transition:opacity .3s}
+.at-overlay.show{opacity:1;pointer-events:auto}
 </style>
 </head>
 <body>
 <div id="app"></div>
+<div class="at-overlay" id="atOverlay"></div>
+<div class="all-toast" id="allToast">
+  <div class="at-icon">🔥</div>
+  <div class="at-title" id="atTitle"></div>
+  <div class="at-sub" id="atSub"></div>
+  <button class="at-btn" onclick="dismissToast()">确认</button>
+</div>
+<div class="audio-init" id="audioInit">
+  <div class="audio-init-text">点击启用计时提示音（iOS需要此步骤）</div>
+  <button class="audio-init-btn" onclick="initAudioContext()">🔊 启用提示音</button>
+</div>
 <script>
-// === TIMER SYSTEM ===
+// === AUDIO SYSTEM (iOS Safari compatible) ===
+let audioCtx=null;let audioUnlocked=false;
+function initAudioContext(){
+  try{
+    audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    const buf=audioCtx.createBuffer(1,1,22050);
+    const src=audioCtx.createBufferSource();
+    src.buffer=buf;src.connect(audioCtx.destination);src.start(0);
+    if(audioCtx.state==='suspended') audioCtx.resume();
+    audioUnlocked=true;
+    setTimeout(()=>{playBeep(660,0.08,0.1);},100);
+    document.getElementById('audioInit').classList.add('hide');
+    sessionStorage.setItem('audioOK','1');
+  }catch(e){document.getElementById('audioInit').classList.add('hide');}
+}
+function playBeep(freq,dur,vol){
+  if(!audioCtx||!audioUnlocked)return;
+  try{
+    if(audioCtx.state==='suspended') audioCtx.resume();
+    const o=audioCtx.createOscillator(),g=audioCtx.createGain();
+    o.connect(g);g.connect(audioCtx.destination);
+    o.frequency.value=freq;o.type='square';
+    g.gain.setValueAtTime(vol||0.15,audioCtx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+dur);
+    o.start();o.stop(audioCtx.currentTime+dur+0.05);
+  }catch(e){}
+}
+function playTimerDone(){
+  if(!audioCtx||!audioUnlocked)return;
+  playBeep(880,0.25,0.18);
+  setTimeout(()=>playBeep(1100,0.4,0.18),300);
+}
+if(sessionStorage.getItem('audioOK')==='1'){
+  try{audioCtx=new (window.AudioContext||window.webkitAudioContext)();audioUnlocked=true;
+    document.addEventListener('DOMContentLoaded',()=>{document.getElementById('audioInit').classList.add('hide');});
+  }catch(e){}
+}
+
+// === TIMER ===
 let timers={};let timerIntervals={};
 function startTimer(key,secs){
   if(timerIntervals[key]){clearInterval(timerIntervals[key]);delete timerIntervals[key];delete timers[key];render();return;}
+  if(audioCtx&&audioCtx.state==='suspended') audioCtx.resume();
   timers[key]=secs;
   timerIntervals[key]=setInterval(()=>{timers[key]--;if(timers[key]<=0){clearInterval(timerIntervals[key]);delete timerIntervals[key];
-    try{const a=new AudioContext();const o=a.createOscillator();const g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=880;o.type='square';g.gain.value=0.15;o.start();o.stop(a.currentTime+0.3);setTimeout(()=>{const o2=a.createOscillator();const g2=a.createGain();o2.connect(g2);g2.connect(a.destination);o2.frequency.value=1100;o2.type='square';g2.gain.value=0.15;o2.start();o2.stop(a.currentTime+0.5);},350);}catch(e){}
-    timers[key]=0;}render();},1000);render();
+    playTimerDone();timers[key]=0;}render();},1000);render();
 }
 function fmtT(s){if(s===undefined)return'';const m=Math.floor(s/60);const ss=s%60;return(m>0?m+':':'')+(ss<10&&m>0?'0':'')+ss;}
-function timerHTML(key,secs){
-  const running=!!timerIntervals[key];const val=timers[key];const done=val===0&&!running;
-  return`<span class="tm"><button class="tm-b ${running?'running':''}" onclick="event.stopPropagation();startTimer('${key}',${secs})">${running?'■ 停止':done?'↻ 重来':secs+'秒'}</button>${val!==undefined?`<span class="tm-d ${done?'done':''}">${done?'完成':fmtT(val)}</span>`:''}</span>`;
+
+// clicking "完成" after timer ends → advance one round for this exercise
+function timerDoneClick(key){
+  if(key.startsWith('wu')){
+    const idx=parseInt(key.replace('wu',''),10);toggleWarmupItem(idx);
+  }else if(key.startsWith('st')){
+    const idx=parseInt(key.replace('st',''),10);toggleStretchItem(idx);
+  }else if(key.startsWith('m')){
+    const parts=key.replace(/^m/,'').split('_');
+    if(parts.length===2){
+      const idx=parseInt(parts[1],10);
+      advanceExRound(idx);
+    }
+  }
+  delete timers[key];render();
 }
 
+function timerHTML(key,secs){
+  const running=!!timerIntervals[key];const val=timers[key];const done=val===0&&!running;
+  let doneHTML='';
+  if(done) doneHTML=`<span class="tm-d done" onclick="event.stopPropagation();timerDoneClick('${key}')">✓ 打卡</span>`;
+  else if(val!==undefined) doneHTML=`<span class="tm-d">${fmtT(val)}</span>`;
+  return`<span class="tm"><button class="tm-b ${running?'running':''}" onclick="event.stopPropagation();startTimer('${key}',${secs})">${running?'■ 停止':done?'↻ 重来':secs+'秒'}</button>${doneHTML}</span>`;
+}
+
+// === DATA ===
 const P=[
 {name:"PHASE 1 · 唤醒",weeks:"WEEK 1-4",rounds:2,work:25,rest:20,rr:60,ex:[
 {n:"臀桥",t:"夹紧屁股顶髋，顶端停1秒",s:25,d:"仰卧在地上，双脚踩地与肩同宽，膝盖弯曲约90度，双手放身体两侧掌心朝下。发力时夹紧屁股，把髋部往天花板方向顶起来，直到身体从肩膀到膝盖成一条直线。在最高点夹紧屁股停1秒，然后慢慢放下来。全程脚掌不要离地，不要用腰往上拱——发力点是屁股，不是腰。如果感觉腰酸说明臀肌没有发力，试试顶起来之前先用力夹一下屁股再往上推。"},
@@ -208,17 +296,103 @@ function fd(s){const d=new Date(s+"T00:00:00");return(d.getMonth()+1)+"."+d.getD
 function gw(o){const t=new Date(),day=t.getDay(),m=new Date(t);m.setDate(t.getDate()-((day+6)%7)+o*7);return Array.from({length:7},(_,i)=>{const d=new Date(m);d.setDate(m.getDate()+i);return d.toISOString().slice(0,10)})}
 function lr(d){try{const s=localStorage.getItem("wk:"+d);return s?JSON.parse(s):null}catch(e){return null}}
 function sr(d,r){try{localStorage.setItem("wk:"+d,JSON.stringify(r))}catch(e){}}
-function gr(d){return lr(d)||{warmup:false,main:[],stretch:false,micro:0,completed:false,rest:false}}
+// exRounds: {0:2, 1:1, ...} = exercise index → completed round count
+function gr(d){return lr(d)||{warmup:[],main:[],stretch:[],micro:0,completed:false,rest:false,exRounds:{}}}
 function lp(){try{return parseInt(localStorage.getItem("wk:phase")||"0",10)}catch(e){return 0}}
 function sp(p){try{localStorage.setItem("wk:phase",String(p))}catch(e){}}
 function cs(){let c=0;const d=new Date(),tr=gr(td()),done=tr.completed||tr.rest;if(!done)d.setDate(d.getDate()-1);for(let i=0;i<90;i++){const s=d.toISOString().slice(0,10),r=gr(s);if(r.completed||r.rest){c++;d.setDate(d.getDate()-1)}else break}if(done)c++;return c}
 
+function migrateRecord(r){
+  if(typeof r.warmup==='boolean'){r.warmup=r.warmup?WU.map((_,i)=>i):[];}
+  if(typeof r.stretch==='boolean'){r.stretch=r.stretch?ST.map((_,i)=>i):[];}
+  if(!Array.isArray(r.warmup))r.warmup=[];
+  if(!Array.isArray(r.stretch))r.stretch=[];
+  // Migrate from old rounds[] system to exRounds{}
+  if(r.rounds&&!r.exRounds){
+    r.exRounds={};
+    // Old system stored per-round arrays; count how many rounds each exercise appeared in
+    if(Array.isArray(r.rounds)){
+      const ph=P[S.phase];
+      ph.ex.forEach((_,i)=>{
+        let cnt=0;
+        r.rounds.forEach(rd=>{if(rd&&rd.includes(i))cnt++;});
+        if(cnt>0)r.exRounds[i]=cnt;
+      });
+    }
+    delete r.rounds;delete r.currentRound;
+  }
+  if(!r.exRounds)r.exRounds={};
+  return r;
+}
+
 let S={phase:lp(),wo:0,sel:td(),exp:"main",cd:{}};
 
+function isAllWarmupDone(r){return r.warmup.length>=WU.length}
+function isAllStretchDone(r){return r.stretch.length>=ST.length}
+function isAllMainDone(r){
+  const ph=P[S.phase];
+  return ph.ex.every((_,i)=>(r.exRounds[i]||0)>=ph.rounds);
+}
+function checkCompleted(r){
+  r.completed=isAllWarmupDone(r)&&isAllStretchDone(r)&&isAllMainDone(r);
+}
+
+// Advance one round for exercise i
+function advanceExRound(i){
+  const r=migrateRecord(gr(S.sel));
+  const ph=P[S.phase];
+  const cur=r.exRounds[i]||0;
+  if(cur<ph.rounds){
+    r.exRounds[i]=cur+1;
+    // Check if this exercise just completed all rounds
+    if(r.exRounds[i]>=ph.rounds){
+      // Check if ALL exercises are now done
+      const allDone=ph.ex.every((_,j)=>(r.exRounds[j]||0)>=ph.rounds);
+      if(allDone){
+        showToast('全部动作完成！','所有轮次已完成，太强了 💪');
+      }
+    }
+    checkCompleted(r);sr(S.sel,r);render();
+  }
+}
+
+// Toggle: click checkbox directly to +1 or undo last round
+window.tmMain=function(i){
+  const r=migrateRecord(gr(S.sel));
+  const ph=P[S.phase];
+  const cur=r.exRounds[i]||0;
+  if(cur>=ph.rounds){
+    // Already maxed, undo last round
+    r.exRounds[i]=cur-1;
+  }else{
+    r.exRounds[i]=cur+1;
+    if(r.exRounds[i]>=ph.rounds){
+      const allDone=ph.ex.every((_,j)=>(r.exRounds[j]||0)>=ph.rounds);
+      if(allDone) showToast('全部动作完成！','所有轮次已完成，太强了 💪');
+    }
+  }
+  checkCompleted(r);sr(S.sel,r);render();
+};
+
+function showToast(title,sub){
+  document.getElementById('atTitle').textContent=title;
+  document.getElementById('atSub').textContent=sub;
+  document.getElementById('atOverlay').classList.add('show');
+  document.getElementById('allToast').classList.add('show');
+  playTimerDone();
+}
+window.dismissToast=function(){
+  document.getElementById('atOverlay').classList.remove('show');
+  document.getElementById('allToast').classList.remove('show');
+}
+
 function render(){
-const today=td(),ph=P[S.phase],wd=gw(S.wo),rec=gr(S.sel),streak=cs();
+const today=td(),ph=P[S.phase],wd=gw(S.wo),rec=migrateRecord(gr(S.sel)),streak=cs();
 const cd=wd.filter(d=>{const r=gr(d);return r.completed||r.rest}).length;
-const mD=(rec.main||[]).length,mT=ph.ex.length;
+// Compute total progress
+let totalDoneRounds=0,totalNeededRounds=ph.ex.length*ph.rounds;
+ph.ex.forEach((_,i)=>{totalDoneRounds+=Math.min(rec.exRounds[i]||0,ph.rounds);});
+
 let h=`<div class="hd"><div class="hd-in"><h1>特别高度机密行动组</h1><div class="sk"><div class="sk-n">${streak}</div><div class="sk-l">连续</div></div></div>
 <div class="pb">${P.map((p,i)=>`<div class="pt ${i===S.phase?'a':''}" onclick="xp(${i})">${p.name}<small>${p.weeks}</small></div>`).join("")}</div></div>
 <div class="wn"><div class="wh"><button class="nb" onclick="nw(-1)">‹</button><span>本周 ${cd}/7${S.wo!==0?`<button class="bb" onclick="gt()">回到今天</button>`:''}</span><button class="nb" onclick="nw(1)">›</button></div>
@@ -229,20 +403,32 @@ return`<div class="db ${sl?'s':''} ${it?'t':''} ${dn?'dn':''}" onclick="sd('${d}
 if(rec.rest){h+=`<div class="rv"><div class="re">🌙</div><div class="rtt">休息日</div><div class="rs">肌肉恢复时在消耗脂肪<br>建议做5-10分钟拉伸</div><button class="rb" onclick="tr()">改为训练日</button></div>`}
 else{
 h+=`<div class="rt"><button class="rb" onclick="tr()">🌙 休息日</button></div>`;
-// Warmup
-h+=rs("warmup","热身","2-3 分钟",()=>{
-let c=WU.map((w,i)=>`<div class="wu"><div class="wu-wrap"><div class="wt">${w.t}</div><div style="flex:1"><div class="wna">${w.n}</div><div class="wtp">${w.tip}</div>${rd('wu'+i,w.d)}</div></div>${timerHTML('wu'+i,w.s)}</div>`).join("");
-c+=`<button class="cb-btn ${rec.warmup?'on':'off'}" onclick="tw()">${rec.warmup?'✓ 已完成':'开始热身'}</button>`;return c});
-// Main
-h+=rs("main",ph.name,`${ph.rounds}轮 · ${ph.work}秒动作 · ${ph.rest}秒休息`,()=>{
-let c=ph.ex.map((e,i)=>{const dn=(rec.main||[]).includes(i);
-return`<div class="ei"><div class="ei-wrap" onclick="tm(${i})"><div class="cb ${dn?'ck':''}">✓</div><div style="flex:1"><div class="en ${dn?'ck':''}">${e.n}</div><div class="et">${e.t}</div>${rd('m'+S.phase+'_'+i,e.d)}</div></div>${timerHTML('m'+S.phase+'_'+i,e.s)}</div>`}).join("");
-c+=`<div class="pg"><div class="pf" style="width:${mT?mD/mT*100:0}%"></div></div>`;return c});
-// Stretch
-h+=rs("stretch","拉伸","5 分钟 · 挑几个做",()=>{
-let c=ST.map((s,i)=>`<div class="si-r"><div class="si-t">${s.p?'<span class="stag">必做</span>':''}<span class="sn">${s.n}</span><span class="sti">${s.t}</span>${timerHTML('st'+i,s.s)}</div>${rd('st'+i,s.d)}</div>`).join("");
-c+=`<button class="cb-btn ${rec.stretch?'on':'off'}" onclick="ts()">${rec.stretch?'✓ 已完成':'完成拉伸'}</button>`;return c});
-// Micro
+// WARMUP
+h+=rs("warmup","热身","2-3 分钟 · "+rec.warmup.length+"/"+WU.length,()=>{
+return WU.map((w,i)=>{const dn=rec.warmup.includes(i);
+return`<div class="ei"><div class="ei-wrap" onclick="toggleWarmupItem(${i})"><div class="cb ${dn?'ck':''}">✓</div><div style="flex:1"><div class="en ${dn?'ck':''}">${w.n}</div><div class="et">${w.tip}</div>${rd('wu'+i,w.d)}</div></div><div class="tm-area">${timerHTML('wu'+i,w.s)}</div></div>`}).join("")});
+// MAIN
+h+=rs("main",ph.name,`${ph.rounds}轮 × ${ph.ex.length}动作 · ${ph.work}s/${ph.rest}s`,()=>{
+let c=ph.ex.map((e,i)=>{
+  const done=rec.exRounds[i]||0;
+  const allDone=done>=ph.rounds;
+  const half=done>0&&!allDone;
+  // Round dots
+  let dots='<div class="rd-row"><span class="rd-lbl">轮</span>';
+  for(let ri=0;ri<ph.rounds;ri++){
+    const isDone=ri<done;
+    const isCur=ri===done&&!allDone;
+    dots+=`<div class="rd-dot ${isDone?'done':''} ${isCur?'cur':''}"></div>`;
+  }
+  dots+='</div>';
+  return`<div class="ei"><div class="ei-wrap" onclick="tmMain(${i})"><div class="cb ${allDone?'ck':''} ${half?'half':''}">✓</div><div style="flex:1"><div class="en ${allDone?'ck':''}">${e.n}</div><div class="et">${e.t}</div>${rd('m'+S.phase+'_'+i,e.d)}</div></div><div class="tm-area">${dots}${timerHTML('m'+S.phase+'_'+i,e.s)}</div></div>`}).join("");
+c+=`<div class="pg"><div class="pf" style="width:${totalNeededRounds?totalDoneRounds/totalNeededRounds*100:0}%"></div></div>`;
+return c});
+// STRETCH
+h+=rs("stretch","拉伸","5 分钟 · "+rec.stretch.length+"/"+ST.length,()=>{
+return ST.map((s,i)=>{const dn=rec.stretch.includes(i);
+return`<div class="ei"><div class="ei-wrap" onclick="toggleStretchItem(${i})"><div class="cb ${dn?'ck':''}">✓</div><div style="flex:1"><div class="en ${dn?'ck':''}">${s.p?'<span class="stag">必做</span>':''}${s.n}</div><div class="et">${s.t}</div>${rd('st'+i,s.d)}</div></div><div class="tm-area">${timerHTML('st'+i,s.s)}</div></div>`}).join("")});
+// MICRO
 h+=rs("micro","久坐微动","每小时 1 次",()=>{
 let c=MI.map((m,i)=>`<div class="mr"><div class="mn">${m.n}</div><div class="md">${m.de}</div>${rd('mi'+i,m.d)}</div>`).join("");
 c+=`<div class="mc"><div><span class="mc-n">${rec.micro||0}</span><span class="mc-l">次</span></div><button class="mc-a" onclick="am()">+1</button></div>`;return c});
@@ -259,11 +445,21 @@ window.gt=function(){S.wo=0;S.sel=td();render()};
 window.sd=function(d){S.sel=d;render()};
 window.te=function(k){S.exp=S.exp===k?null:k;render()};
 window.tg=function(k){S.cd[k]=!S.cd[k];render()};
-window.tw=function(){const r=gr(S.sel);r.warmup=!r.warmup;r.completed=r.warmup&&r.stretch&&(r.main||[]).length>=P[S.phase].ex.length;sr(S.sel,r);render()};
-window.ts=function(){const r=gr(S.sel);r.stretch=!r.stretch;r.completed=r.warmup&&r.stretch&&(r.main||[]).length>=P[S.phase].ex.length;sr(S.sel,r);render()};
-window.tm=function(i){const r=gr(S.sel);const a=[...(r.main||[])];if(a.includes(i))a.splice(a.indexOf(i),1);else a.push(i);r.main=a;r.completed=r.warmup&&r.stretch&&a.length>=P[S.phase].ex.length;sr(S.sel,r);render()};
-window.am=function(){const r=gr(S.sel);r.micro=(r.micro||0)+1;sr(S.sel,r);render()};
-window.tr=function(){const r=gr(S.sel);r.rest=!r.rest;r.completed=false;r.warmup=false;r.main=[];r.stretch=false;sr(S.sel,r);render()};
+
+window.toggleWarmupItem=function(i){
+  const r=migrateRecord(gr(S.sel));
+  const a=[...r.warmup];
+  if(a.includes(i))a.splice(a.indexOf(i),1);else a.push(i);
+  r.warmup=a;checkCompleted(r);sr(S.sel,r);render();
+};
+window.toggleStretchItem=function(i){
+  const r=migrateRecord(gr(S.sel));
+  const a=[...r.stretch];
+  if(a.includes(i))a.splice(a.indexOf(i),1);else a.push(i);
+  r.stretch=a;checkCompleted(r);sr(S.sel,r);render();
+};
+window.am=function(){const r=migrateRecord(gr(S.sel));r.micro=(r.micro||0)+1;sr(S.sel,r);render()};
+window.tr=function(){const r=gr(S.sel);r.rest=!r.rest;r.completed=false;r.warmup=[];r.main=[];r.stretch=[];r.exRounds={};sr(S.sel,r);render()};
 render();
 </script>
 </body>
