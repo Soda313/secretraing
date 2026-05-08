@@ -291,16 +291,17 @@ const MI=[
 const WD=["一","二","三","四","五","六","日"];
 const IC={warmup:"var(--gold)",main:"var(--cyan)",stretch:"var(--coral)",micro:"var(--dim)"};
 
-function td(){return new Date().toISOString().slice(0,10)}
+function localDateStr(d){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),dd=String(d.getDate()).padStart(2,'0');return y+'-'+m+'-'+dd;}
+function td(){return localDateStr(new Date())}
 function fd(s){const d=new Date(s+"T00:00:00");return(d.getMonth()+1)+"."+d.getDate()}
-function gw(o){const t=new Date(),day=t.getDay(),m=new Date(t);m.setDate(t.getDate()-((day+6)%7)+o*7);return Array.from({length:7},(_,i)=>{const d=new Date(m);d.setDate(m.getDate()+i);return d.toISOString().slice(0,10)})}
+function gw(o){const t=new Date(),day=t.getDay(),m=new Date(t.getFullYear(),t.getMonth(),t.getDate()-((day+6)%7)+o*7);return Array.from({length:7},(_,i)=>{const d=new Date(m);d.setDate(m.getDate()+i);return localDateStr(d)})}
 function lr(d){try{const s=localStorage.getItem("wk:"+d);return s?JSON.parse(s):null}catch(e){return null}}
 function sr(d,r){try{localStorage.setItem("wk:"+d,JSON.stringify(r))}catch(e){}}
 // exRounds: {0:2, 1:1, ...} = exercise index → completed round count
 function gr(d){return lr(d)||{warmup:[],main:[],stretch:[],micro:0,completed:false,rest:false,exRounds:{}}}
 function lp(){try{return parseInt(localStorage.getItem("wk:phase")||"0",10)}catch(e){return 0}}
 function sp(p){try{localStorage.setItem("wk:phase",String(p))}catch(e){}}
-function cs(){let c=0;const d=new Date(),tr=gr(td()),done=tr.completed||tr.rest;if(!done)d.setDate(d.getDate()-1);for(let i=0;i<90;i++){const s=d.toISOString().slice(0,10),r=gr(s);if(r.completed||r.rest){c++;d.setDate(d.getDate()-1)}else break}if(done)c++;return c}
+function cs(){let c=0;const d=new Date(),tr=gr(td()),done=tr.completed||tr.rest;if(!done)d.setDate(d.getDate()-1);for(let i=0;i<90;i++){const s=localDateStr(d),r=gr(s);if(r.completed||r.rest){c++;d.setDate(d.getDate()-1)}else break}if(done)c++;return c}
 
 function migrateRecord(r){
   if(typeof r.warmup==='boolean'){r.warmup=r.warmup?WU.map((_,i)=>i):[];}
